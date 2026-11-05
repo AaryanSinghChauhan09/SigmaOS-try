@@ -1,0 +1,6 @@
+[component]
+name = "SigmaOS-try"
+tier = 4
+description = "Interactive live CD / ISO try-before-install launcher and demo environment manager"
+contracts = ['try-launcher', 'demo-session-manager', 'ramdisk-persistence']
+upstream_inspirations = ['https://github.com/omacom/try-omarchy']

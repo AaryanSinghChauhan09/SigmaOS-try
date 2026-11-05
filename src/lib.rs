@@ -1,11 +1,26 @@
-//! SigmaOS-try — Component for SigmaOS
-//!
-//! Part of the SigmaOS multi-repository ecosystem.
-//! See https://github.com/AaryanSinghChauhan09/SigmaOS for details.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum LiveSessionMode { LiveDemoRamdisk, DirectInstall, SafeGraphicsMode }
 
-#![allow(dead_code)]
+pub struct TryLauncherConfig {
+    pub mode: LiveSessionMode,
+    pub toram: bool,
+}
 
-/// Module entry point for SigmaOS-try
-pub fn version() -> &'static str {
-    env!("CARGO_PKG_VERSION")
+impl TryLauncherConfig {
+    pub fn live_default() -> Self {
+        Self { mode: LiveSessionMode::LiveDemoRamdisk, toram: true }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_try_launcher_config_aaa() {
+        // Arrange & Act
+        let cfg = TryLauncherConfig::live_default();
+        // Assert
+        assert_eq!(cfg.mode, LiveSessionMode::LiveDemoRamdisk);
+        assert!(cfg.toram);
+    }
 }
